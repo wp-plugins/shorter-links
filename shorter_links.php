@@ -26,7 +26,7 @@ function akrabat_sl_create_shortlink() {
             if(!empty($shortLink)) {
                 $slug = $shortLink;
             }
-            $url = "/$slug";
+            $url .= "/$slug";
             echo '<link rev="canonical" rel="alternate shorter" href="'.$url.'" />';
             if (!headers_sent()) {
                 header('X-Rev-Canonical: '.$url);
