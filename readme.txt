@@ -4,7 +4,7 @@ Donate link: http://akrabat.com
 Tags: revcanonical link url shorter
 Requires at least: 2.5
 Tested up to: 2.7.9
-Stable tag: trunk
+Stable tag: 1.0
 
 This plugin creates rel="alternate shorter" (and rev="canonical) links with 
 shorter URLs in them, along with appropriate HTTP headers.
