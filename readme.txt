@@ -30,7 +30,7 @@ The &lt;link&gt; element looks like this:
 
 The HTTP header is:
 
-   Link: <{url}>; rev=canonical
+    Link: <{url}>; rev=canonical
 
 Related Links:
 
