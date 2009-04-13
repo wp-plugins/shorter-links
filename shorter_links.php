@@ -3,21 +3,22 @@
  * @package Shorter Links
  * @author Rob Allen (rob@akrabat.com)
  * @license New BSD: http://akrabat.com/license/new-bsd
- * @version 1.0
+ * @version 1.1
  */
 /*
 Plugin Name: Shorter Links
 Plugin URI: http://akrabat.com/shorter_links
 Description: Provide links with rel="alternate shorter" and rev="canonical" attributes
 Author: Rob Allen
-Version: 1.0
+Version: 1.1
 Author URI: http://akrabat.com
 */
 
 define ('AKRABAT_SL_META_FIELD_NAME', 'Shorter link');
+$akrabat_sl_shorter_link = '';
 
 function akrabat_sl_create_shortlink() {
-    global $post;
+    global $post, $akrabat_sl_shorter_link;
     if (is_single() || (is_page() && !is_front_page())) {
         $url = get_bloginfo('url');
         if($post && $post->ID > 0) {
@@ -27,12 +28,19 @@ function akrabat_sl_create_shortlink() {
                 $slug = $shortLink;
             }
             $url .= "/$slug";
-            echo '<link rev="canonical" rel="alternate shorter" href="'.$url.'" />';
+            $akrabat_sl_shorter_link = $url;
             if (!headers_sent()) {
                 header('X-Rev-Canonical: '.$url);
                 header('Link: <'.$url.'>; rev="http://revcanonical.appspot.com/#canonical"; rel="alternate http://revcanonical.appspot.com/#shorter"');
             }
         }
+    }
+}
+
+function akrabat_sl_wp_head() {
+    global $akrabat_sl_shorter_link;
+    if (!empty($akrabat_sl_shorter_link)) {
+        echo '<link rev="canonical" rel="alternate shorter" href="'.$akrabat_sl_shorter_link.'" />';
     }
 }
 
@@ -73,7 +81,8 @@ function akrabat_sl_redirect($query_vars)
     return $query_vars;
 }
 
-add_action('wp_head', 'akrabat_sl_create_shortlink');
+add_action('template_redirect', 'akrabat_sl_create_shortlink');
+add_action('wp_head', 'akrabat_sl_wp_head');
 add_action('save_post', 'akrabat_sl_save_post', 10, 2);
 add_filter('request', 'akrabat_sl_redirect');
 
