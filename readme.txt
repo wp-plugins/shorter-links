@@ -4,10 +4,10 @@ Donate link: http://akrabat.com
 Tags: revcanonical links url shorter
 Requires at least: 2.5
 Tested up to: 2.7.9
-Stable tag: 1.1
+Stable tag: 1.2
 
 This plugin creates rel="alternate shorter" (and rev="canonical) links with 
-shorter URLs in them, along with appropriate HTTP headers.
+shorter URLs in them, along with an appropriate HTTP header.
 
 == Description ==
 
@@ -15,8 +15,7 @@ The **Shorter Links** WordPress plugin automatically creates a link
 element in the <head> section of the post's page with 
 rev="canonical" and rel="alternate shorter" attributes. The URL in 
 the href attribute defaults to the id number of the post in question. 
-It also creates two HTTP headers: X-Rev-Canonical and Link that also 
-point to the shorter link.
+It also creates an HTTP `Link` header that also points to the shorter link.
 
 A custom field called "Shorter link" is created once a post is saved, 
 so that you can change the shorter link to a more memorable set of 
@@ -25,19 +24,20 @@ characters.
 Note that rev="canonical" isn't HTML5 compliant, so it is possible
 that this attribute will be removed at some point in the future.
 
-The <link> element looks like this:
+The &lt;link&gt; element looks like this:
+    
     <link rev="canonical" rel="alternate shorter" href="{url}" />
 
-The HTTP headers are:
-    X-Rev-Canonical: {url}
-    Link: <{$url}>; rev="http://revcanonical.appspot.com/#canonical"; 
-        rel="alternate http://revcanonical.appspot.com/#shorter"
+The HTTP header is:
+
+   Link: <{url}>; rev=canonical
 
 Related Links:
 
-* <a href="http://akrabat.com/shorter-links/" title="Shorter Links WordPress plugin">Plugin Homepage</a>
-* <a href="http://revcanonical.appspot.com/" title="revCanonical :url shortening that doesn't hurt the internet">revCanonical URL shortener</a>
-* <a href="http://shiflett.org/blog/2009/apr/save-the-internet-with-rev-canonical" title="Save the Internet with rev=canonical">Information about shorter links by Chris Shiflett</a>
+* [Plugin home page](http://akrabat.com/shorter-links)
+* [revCanonical URL shortener](http://revcanonical.appspot.com/)
+* [URL Shortening Hinting article](http://laughingmeme.org/2009/04/03/url-shortening-hinting/)
+* [A rev="canonical" HTTP Header article](http://shiflett.org/blog/2009/apr/a-rev-canonical-http-header)
 
 == Installation ==
 
@@ -60,11 +60,14 @@ This plugin is licensed under the [New BSD license](http://akrabat.com/license/n
 
 == History == 
 
+**1.2 - 13 April 2009**  
+Only send the `Link` HTTP header as recommended by [Shiflett](http://shiflett.org/blog/2009/apr/a-rev-canonical-http-header).
+
 **1.1 - 13 April 2009**  
 Fixed output of HTTP headers. Patch by [Jeff Waugh](http://bethesignal.org/).
 
 **1.0 - 11 April 2009**  
-Initial release
+Initial release.
 
 
 

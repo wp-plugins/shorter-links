@@ -10,7 +10,7 @@ Plugin Name: Shorter Links
 Plugin URI: http://akrabat.com/shorter_links
 Description: Provide links with rel="alternate shorter" and rev="canonical" attributes
 Author: Rob Allen
-Version: 1.1
+Version: 1.2
 Author URI: http://akrabat.com
 */
 
@@ -30,8 +30,7 @@ function akrabat_sl_create_shortlink(&$wp) {
             $url .= "/$slug";
             $akrabat_sl_shorter_link = $url;
             if (!headers_sent()) {
-                header('X-Rev-Canonical: '.$url);
-                header('Link: <'.$url.'>; rev="http://revcanonical.appspot.com/#canonical"; rel="alternate http://revcanonical.appspot.com/#shorter"');
+                header('Link: <'.$url.'>; rev=canonical');
             }
         }
     }
