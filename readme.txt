@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: akrabat
 Donate link: http://akrabat.com
-Tags: revcanonical link url shorter
+Tags: revcanonical links url shorter
 Requires at least: 2.5
 Tested up to: 2.7.9
 Stable tag: 1.1
