@@ -17,7 +17,7 @@ Author URI: http://akrabat.com
 define ('AKRABAT_SL_META_FIELD_NAME', 'Shorter link');
 $akrabat_sl_shorter_link = '';
 
-function akrabat_sl_create_shortlink() {
+function akrabat_sl_create_shortlink(&$wp) {
     global $post, $akrabat_sl_shorter_link;
     if (is_single() || (is_page() && !is_front_page())) {
         $url = get_bloginfo('url');
@@ -81,7 +81,7 @@ function akrabat_sl_redirect($query_vars)
     return $query_vars;
 }
 
-add_action('template_redirect', 'akrabat_sl_create_shortlink');
+add_action('wp', 'akrabat_sl_create_shortlink');
 add_action('wp_head', 'akrabat_sl_wp_head');
 add_action('save_post', 'akrabat_sl_save_post', 10, 2);
 add_filter('request', 'akrabat_sl_redirect');
