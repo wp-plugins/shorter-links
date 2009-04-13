@@ -28,9 +28,8 @@ The &lt;link&gt; element looks like this:
     
     <link rev="canonical" rel="alternate shorter" href="{url}" />
 
-The HTTP header is:
-
-   Link: <{url}>; rev=canonical
+The HTTP header is:  
+    Link: <{url}>; rev=canonical
 
 Related Links:
 
