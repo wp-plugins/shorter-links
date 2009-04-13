@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: akrabat
 Donate link: http://akrabat.com
-Tags: revcanonical link url shorter
+Tags: revcanonical links url shorter
 Requires at least: 2.5
 Tested up to: 2.7.9
 Stable tag: 1.1
@@ -48,9 +48,7 @@ Related Links:
 
 == Frequently Asked Questions ==
 
-*what's new in the latest version?*
-
-The changelog is maintened on [the project home page](http:/akrabat.com/shorter-links/).
+None yet!
 
 == Screenshots == 
 
@@ -59,3 +57,14 @@ None.
 == Licence ==
 
 This plugin is licensed under the [New BSD license](http://akrabat.com/license/new-bsd).
+
+== History == 
+
+**1.1 - 13 April 2009**  
+Fixed output of HTTP headers. Patch by [Jeff Waugh](http://bethesignal.org/).
+
+**1.0 - 11 April 2009**  
+Initial release
+
+
+
