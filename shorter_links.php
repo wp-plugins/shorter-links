@@ -20,7 +20,11 @@ $akrabat_sl_shorter_link = '';
 function akrabat_sl_create_shortlink(&$wp) {
     global $post, $akrabat_sl_shorter_link;
     if (is_single() || (is_page() && !is_front_page())) {
-        $url = get_bloginfo('url');
+        $url = trim(get_option('akrabat_sl_base_url'), "/\t\r\n ");
+        if (empty($url)) {
+            $url = trim($get_bloginfo('url'), "/\t\r\n ");
+        }
+
         if($post && $post->ID > 0) {
             $shortLink = get_post_meta($post->ID, AKRABAT_SL_META_FIELD_NAME, true);
             $slug = $post->ID;
@@ -80,9 +84,20 @@ function akrabat_sl_redirect($query_vars)
     return $query_vars;
 }
 
+function akrabat_sl_admin_actions()
+{
+    add_options_page('Shorter Links', 'Shorter Links', 1, 'Shorter Links', 'akrabat_sl_admin_page');
+}
+
+function akrabat_sl_admin_page()
+{
+    include('config.php');
+}
+
 add_action('wp', 'akrabat_sl_create_shortlink');
 add_action('wp_head', 'akrabat_sl_wp_head');
 add_action('save_post', 'akrabat_sl_save_post', 10, 2);
+add_action('admin_menu', 'akrabat_sl_admin_actions');  
 add_filter('request', 'akrabat_sl_redirect');
 
 // vim: set filetype=php expandtab tabstop=4 shiftwidth=4 autoindent smartindent: 

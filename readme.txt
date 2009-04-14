@@ -60,6 +60,9 @@ This plugin is licensed under the [New BSD license](http://akrabat.com/license/n
 
 == History == 
 
+**1.3 - 14 April 2009**
+Add support for selecting the base URL [Dave Marshall](davemastergeneral@gmail.com).
+
 **1.2 - 13 April 2009**  
 Only send the `Link` HTTP header as recommended by [Shiflett](http://shiflett.org/blog/2009/apr/a-rev-canonical-http-header).
 
