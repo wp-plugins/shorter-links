@@ -5,7 +5,7 @@
  * @package Shorter Links
  * @author Dave Marshall (davemastergeneral@gmail.com)
  * @license New BSD: http://akrabat.com/license/new-bsd
- * @version 1.1
+ * @version 1.0
  */
 
 if (isset($_POST['akrabat_sl_base_url'])) {

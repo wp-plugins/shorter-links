@@ -3,14 +3,14 @@
  * @package Shorter Links
  * @author Rob Allen (rob@akrabat.com)
  * @license New BSD: http://akrabat.com/license/new-bsd
- * @version 1.1
+ * @version 1.3
  */
 /*
 Plugin Name: Shorter Links
 Plugin URI: http://akrabat.com/shorter_links
 Description: Provide links with rel="alternate shorter" and rev="canonical" attributes
 Author: Rob Allen
-Version: 1.2
+Version: 1.3
 Author URI: http://akrabat.com
 */
 
