@@ -12,7 +12,7 @@ if (isset($_POST['akrabat_sl_base_url'])) {
     check_admin_referer('akrabat_sl_form');
     update_option('akrabat_sl_base_url', $_POST['akrabat_sl_base_url']);
 ?>
-    <div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
+    <div class="updated"><p><strong><?php _e('Options saved. Clear any caches you may be using!' ); ?></strong></p></div>
 <?php
 }
 ?>
