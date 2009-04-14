@@ -24,7 +24,8 @@ if (isset($_POST['akrabat_sl_base_url'])) {
         <p>
            <label for="akrabat_sl_base_url">Base URL:</label>
            <input type="text" id="akrabat_sl_base_url" name="akrabat_sl_base_url" 
-                   value="<?php echo get_option('akrabat_sl_base_url');?>" /> e.g. http://akrabat.com
+                   value="<?php echo get_option('akrabat_sl_base_url');?>" /> e.g. <?php echo get_bloginfo('url');?>
+           <div>Will use <tt><?php echo get_bloginfo('url');?></tt> if left blank.</div>
         </p>
         <p class="submit">  
             <input type="submit" name="Submit" value="Save" />

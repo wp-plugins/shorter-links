@@ -22,7 +22,7 @@ function akrabat_sl_create_shortlink(&$wp) {
     if (is_single() || (is_page() && !is_front_page())) {
         $url = trim(get_option('akrabat_sl_base_url'), "/\t\r\n ");
         if (empty($url)) {
-            $url = trim($get_bloginfo('url'), "/\t\r\n ");
+            $url = trim(get_bloginfo('url'), "/\t\r\n ");
         }
 
         if($post && $post->ID > 0) {
