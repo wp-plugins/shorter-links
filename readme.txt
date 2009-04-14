@@ -4,7 +4,7 @@ Donate link: http://akrabat.com
 Tags: revcanonical links url shorter
 Requires at least: 2.5
 Tested up to: 2.7.9
-Stable tag: 1.2
+Stable tag: 1.3
 
 This plugin creates rel="alternate shorter" (and rev="canonical) links with 
 shorter URLs in them, along with an appropriate HTTP header.
@@ -20,6 +20,9 @@ It also creates an HTTP `Link` header that also points to the shorter link.
 A custom field called "Shorter link" is created once a post is saved, 
 so that you can change the shorter link to a more memorable set of 
 characters.
+
+The choice of URL to use for the short link can be configured within
+Settings->Shorter Links.
 
 Note that rev="canonical" isn't HTML5 compliant, so it is possible
 that this attribute will be removed at some point in the future.
@@ -43,7 +46,9 @@ Related Links:
 
 1. Upload `shorter_links.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. To set a custom shorter link, update a post so that the custom field is
+3 If you want to set a different Base URL, then change set it from Settings->Shorter Links
+
+4. To set a custom shorter link, update a post so that the custom field is
    created and then fill in a unique value in the field.
 
 == Frequently Asked Questions ==
@@ -61,7 +66,7 @@ This plugin is licensed under the [New BSD license](http://akrabat.com/license/n
 == History == 
 
 **1.3 - 14 April 2009**
-Add support for selecting the base URL [Dave Marshall](davemastergeneral@gmail.com).
+Add support for setting the base URL. Patch by [Dave Marshall](davemastergeneral@gmail.com).
 
 **1.2 - 13 April 2009**  
 Only send the `Link` HTTP header as recommended by [Shiflett](http://shiflett.org/blog/2009/apr/a-rev-canonical-http-header).
@@ -71,6 +76,5 @@ Fixed output of HTTP headers. Patch by [Jeff Waugh](http://bethesignal.org/).
 
 **1.0 - 11 April 2009**  
 Initial release.
-
 
 
