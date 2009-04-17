@@ -3,12 +3,12 @@
  * @package Shorter Links
  * @author Rob Allen (rob@akrabat.com)
  * @license New BSD: http://akrabat.com/license/new-bsd
- * @version 1.3
+ * @version 1.4
  */
 /*
 Plugin Name: Shorter Links
 Plugin URI: http://akrabat.com/shorter_links
-Description: Provide links with rel="alternate shorter" and rev="canonical" attributes
+Description: Provide links with rel="shorturl" and optionally rev="canonical" attributes
 Author: Rob Allen
 Version: 1.3
 Author URI: http://akrabat.com
@@ -34,7 +34,7 @@ function akrabat_sl_create_shortlink(&$wp) {
             $url .= "/$slug";
             $akrabat_sl_shorter_link = $url;
             if (!headers_sent()) {
-                header('Link: <'.$url.'>; rev=canonical');
+                header('Link: <'.$url.'>; rel=shorturl');
             }
         }
     }
@@ -43,7 +43,11 @@ function akrabat_sl_create_shortlink(&$wp) {
 function akrabat_sl_wp_head() {
     global $akrabat_sl_shorter_link;
     if (!empty($akrabat_sl_shorter_link)) {
-        echo '<link rev="canonical" rel="alternate shorter" href="'.$akrabat_sl_shorter_link.'" />';
+        $revCanonicalAttribute = '';
+        if(get_option('akrabat_sl_include_rev_canonical') == 0) {
+            $revCanonicalAttribute = 'rev="canonical" ';
+        }
+        echo '<link '.$revCanonicalAttribute.'rel="shorturl" href="'.$akrabat_sl_shorter_link.'" />';
     }
 }
 
