@@ -8,9 +8,9 @@
 /*
 Plugin Name: Shorter Links
 Plugin URI: http://akrabat.com/shorter_links
-Description: Provide links with rel="shorturl" and optionally rev="canonical" attributes
+Description: Provide a link in the header with rel="shorturl" along with a Link HTTP header
 Author: Rob Allen
-Version: 1.3
+Version: 1.4
 Author URI: http://akrabat.com
 */
 
@@ -19,10 +19,6 @@ $akrabat_sl_shorter_link = '';
 
 function akrabat_sl_create_shortlink(&$wp) {
     global $post, $akrabat_sl_shorter_link;
-
-    if(get_option('akrabat_sl_include_rev_canonical') === false) {
-        add_option('akrabat_sl_include_rev_canonical', 1);
-    }
 
     if (is_single() || (is_page() && !is_front_page())) {
         $url = trim(get_option('akrabat_sl_base_url'), "/\t\r\n ");
@@ -48,11 +44,7 @@ function akrabat_sl_create_shortlink(&$wp) {
 function akrabat_sl_wp_head() {
     global $akrabat_sl_shorter_link;
     if (!empty($akrabat_sl_shorter_link)) {
-        $revCanonicalAttribute = '';
-        if(get_option('akrabat_sl_include_rev_canonical') == 1) {
-            $revCanonicalAttribute = 'rev="canonical" ';
-        }
-        echo '<link '.$revCanonicalAttribute.'rel="shorturl" href="'.$akrabat_sl_shorter_link.'" />';
+        echo '<link rel="shorturl" href="'.$akrabat_sl_shorter_link.'" />';
     }
 }
 
@@ -109,6 +101,5 @@ add_action('save_post', 'akrabat_sl_save_post', 10, 2);
 add_action('admin_menu', 'akrabat_sl_admin_actions');  
 add_filter('request', 'akrabat_sl_redirect');
 
-//var_dump(get_option('akrabat_sl_include_rev_canonical'));exit;
 // vim: set filetype=php expandtab tabstop=4 shiftwidth=4 autoindent smartindent: 
 
