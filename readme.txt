@@ -50,9 +50,13 @@ Related Links:
 == Frequently Asked Questions ==
 
 ** Is there a bookmarklet to extract shorturl links? **
+
 This is a bookmarklet based on [Shorten](http://swtiny.eu/EZa):
 
-[Short URL](javascript:(function(){var%20url=document.location;var%20links=document.getElementsByTagName('link');var%20found=0;for(var%20i%20=%200,%20l;%20l%20=%20links[i];%20i++){if(l.getAttribute('rel')=='shorturl'||(/alternateshort/).exec(l.getAttribute('rel')))%20{found=l.getAttribute('href');break;}}if%20(!found)%20{for%20(var%20i%20=%200;%20l%20=%20document.links[i];%20i++)%20{if%20(l.getAttribute('rel')%20==%20'shorturl')%20{found%20=%20l.getAttribute('href');break;}}}if%20(found)%20{prompt('URL:',%20found);}%20else%20{window.onTinyUrlGot%20=%20function(r)%20{if%20(r.ok)%20{prompt('URL:',%20r.tinyurl);}%20else%20{alert('Could%20not%20shorten%20with%20tinyurl');}};var%20s%20=%20document.createElement('script');s.type='text/javascript';s.src='http://json-tinyurl.appspot.com/?callback=onTinyUrlGot&url='%20+document.location;document.getElementsByTagName('head')[0].appendChild(s);}})();)
+[Short URL][1]
+
+[1]: javascript:(function(){var%20url=document.location;var%20links=document.getElementsByTagName('link');var%20found=0;for(var%20i%20=%200,%20l;%20l%20=%20links[i];%20i++){if(l.getAttribute('rel')=='shorturl'||(/alternateshort/).exec(l.getAttribute('rel')))%20{found=l.getAttribute('href');break;}}if%20(!found)%20{for%20(var%20i%20=%200;%20l%20=%20document.links[i];%20i++)%20{if%20(l.getAttribute('rel')%20==%20'shorturl')%20{found%20=%20l.getAttribute('href');break;}}}if%20(found)%20{prompt('URL:',%20found);}%20else%20{window.onTinyUrlGot%20=%20function(r)%20{if%20(r.ok)%20{prompt('URL:',%20r.tinyurl);}%20else%20{alert('Could%20not%20shorten%20with%20tinyurl');}};var%20s%20=%20document.createElement('script');s.type='text/javascript';s.src='http://json-tinyurl.appspot.com/?callback=onTinyUrlGot&url='%20+document.location;document.getElementsByTagName('head')[0].appendChild(s);}})();
+
 
 (Just drag to your bookmarks bar)
 
