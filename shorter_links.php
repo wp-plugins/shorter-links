@@ -58,12 +58,18 @@ function akrabat_sl_save_post($post_id, $post) {
 
 function akrabat_sl_redirect($query_vars)
 {
-    // check if pagename matches a short url
-    if(!array_key_exists('pagename', $query_vars)) {
+    // check if pagename or category_name matches a short url
+    $shortUrl = '';
+    if(array_key_exists('pagename', $query_vars)) {
+        $shortUrl = $query_vars['pagename'];
+    }
+    if(array_key_exists('category_name', $query_vars)) {
+        $shortUrl = $query_vars['category_name'];
+    }
+    if(!$shortUrl) {
         return $query_vars;
     }
 
-    $shortUrl = $query_vars['pagename'];
     if((int)$shortUrl > 0) {
         wp_redirect(get_permalink($shortUrl));
         exit;
