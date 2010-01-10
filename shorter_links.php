@@ -3,14 +3,14 @@
  * @package Shorter Links
  * @author Rob Allen (rob@akrabat.com)
  * @license New BSD: http://akrabat.com/license/new-bsd
- * @version 1.4
+ * @version 1.6
  */
 /*
 Plugin Name: Shorter Links
-Plugin URI: http://akrabat.com/shorter_links
-Description: Provide a link in the header with rel="shorturl" along with a Link HTTP header
+Plugin URI: http://wordpress.org/extend/plugins/shorter-links/
+Description: Provide a link in the header with rel="shorturl" along with a Link HTTP header and custom shortcodes
 Author: Rob Allen
-Version: 1.4
+Version: 1.6
 Author URI: http://akrabat.com
 */
 
