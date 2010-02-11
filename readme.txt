@@ -4,7 +4,7 @@ Donate link: http://akrabat.com
 Tags: revcanonical links url shorter shorturl
 Requires at least: 2.5
 Tested up to: 2.9
-Stable tag: 1.5
+Stable tag: 1.7
 
 This plugin creates rel="shorturl" link with a shorter URL in it, along with
 an appropriate Link HTTP header.
@@ -40,7 +40,7 @@ Related Links:
 
 == Installation ==
 
-1. Upload `shorter_links.php` to the `/wp-content/plugins/` directory
+1. Upload `shorter_links.php and config.php` to `/wp-content/plugins/shorter-links` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. If you want to set a different base URL, change it from
    Settings->Shorter Links.
@@ -69,6 +69,12 @@ None.
 This plugin is licensed under the [New BSD license](http://akrabat.com/license/new-bsd).
 
 == History == 
+
+**1.7 - 11 Feburary 2010**
+Handle failures better.
+
+**1.6 - 10 January 2010**
+Update version number in correct places so that the WP plugins system notices the update.
 
 **1.5 - 29 December 2009**
 Support permalinks that start with /%category%/
