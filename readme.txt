@@ -7,7 +7,7 @@ Tested up to: 3.0.1
 Stable tag: 1.8
 
 This plugin creates rel="shortlink" link with a shorter URL in it, along with
-an appropriate Link HTTP header. For v3, it replaces the built in one.
+an appropriate Link HTTP header.
 
 == Description ==
 
