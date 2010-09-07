@@ -3,14 +3,14 @@
  * @package Shorter Links
  * @author Rob Allen (rob@akrabat.com)
  * @license New BSD: http://akrabat.com/license/new-bsd
- * @version 1.4
+ * @version 1.8.1
  */
 /*
 Plugin Name: Shorter Links
-Plugin URI: http://akrabat.com/shorter_links
-Description: Provide a link in the header with rel="shorturl" along with a Link HTTP header
+Plugin URI: http://wordpress.org/extend/plugins/shorter-links/
+Description: Provide a link in the header with rel="shortlink" along with a Link HTTP header and custom shortcodes
 Author: Rob Allen
-Version: 1.4
+Version: 1.8.1
 Author URI: http://akrabat.com
 */
 
@@ -35,16 +35,23 @@ function akrabat_sl_create_shortlink(&$wp) {
             $url .= "/$slug";
             $akrabat_sl_shorter_link = $url;
             if (!headers_sent()) {
-                header('Link: <'.$url.'>; rel=shorturl');
+                header('Link: <'.$url.'>; rel=shortlink');
             }
         }
     }
 }
 
-function akrabat_sl_wp_head() {
+function akrabat_sl_pre_get_shortlink($id, $context=null, $allow_slugs=null)
+{
     global $akrabat_sl_shorter_link;
-    if (!empty($akrabat_sl_shorter_link)) {
-        echo '<link rel="shorturl" href="'.$akrabat_sl_shorter_link.'" />';
+    return $akrabat_sl_shorter_link;
+}
+
+function akrabat_sl_wp_head() {
+    global $akrabat_sl_shorter_link, $wp_version;
+    
+    if ($wp_version < '3'  && !empty($akrabat_sl_shorter_link)) {
+        echo '<link rel="shortllink" href="'.$akrabat_sl_shorter_link.'" />';
     }
 }
 
@@ -71,7 +78,11 @@ function akrabat_sl_redirect($query_vars)
     }
 
     if((int)$shortUrl > 0) {
-        wp_redirect(get_permalink($shortUrl));
+        $link = get_permalink($shortUrl);
+         if (!$link) {
+            return $query_vars;
+        } 
+        wp_redirect($link);
         exit;
     }
 
@@ -93,12 +104,12 @@ function akrabat_sl_redirect($query_vars)
 
 function akrabat_sl_admin_actions()
 {
-    add_options_page('Shorter Links', 'Shorter Links', 1, 'Shorter Links', 'akrabat_sl_admin_page');
+    add_options_page('ShorterLinks', 'Shorter Links', 'manage_options', 'Shorter Links', 'akrabat_sl_admin_page');
 }
 
 function akrabat_sl_admin_page()
 {
-    include('config.php');
+    include(dirname(__FILE__). '/config.php');
 }
 
 add_action('wp', 'akrabat_sl_create_shortlink');
@@ -106,6 +117,6 @@ add_action('wp_head', 'akrabat_sl_wp_head');
 add_action('save_post', 'akrabat_sl_save_post', 10, 2);
 add_action('admin_menu', 'akrabat_sl_admin_actions');  
 add_filter('request', 'akrabat_sl_redirect');
+add_filter('pre_get_shortlink', 'akrabat_sl_pre_get_shortlink');
 
 // vim: set filetype=php expandtab tabstop=4 shiftwidth=4 autoindent smartindent: 
-
