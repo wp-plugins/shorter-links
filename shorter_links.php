@@ -3,14 +3,14 @@
  * @package Shorter Links
  * @author Rob Allen (rob@akrabat.com)
  * @license New BSD: http://akrabat.com/license/new-bsd
- * @version 1.8
+ * @version 1.8.1
  */
 /*
 Plugin Name: Shorter Links
 Plugin URI: http://wordpress.org/extend/plugins/shorter-links/
 Description: Provide a link in the header with rel="shortlink" along with a Link HTTP header and custom shortcodes
 Author: Rob Allen
-Version: 1.8
+Version: 1.8.1
 Author URI: http://akrabat.com
 */
 
@@ -41,7 +41,7 @@ function akrabat_sl_create_shortlink(&$wp) {
     }
 }
 
-function akrabat_pre_get_shortlink($id, $context, $allow_slugs)
+function akrabat_sl_pre_get_shortlink($id, $context=null, $allow_slugs=null)
 {
     global $akrabat_sl_shorter_link;
     return $akrabat_sl_shorter_link;
@@ -117,6 +117,6 @@ add_action('wp_head', 'akrabat_sl_wp_head');
 add_action('save_post', 'akrabat_sl_save_post', 10, 2);
 add_action('admin_menu', 'akrabat_sl_admin_actions');  
 add_filter('request', 'akrabat_sl_redirect');
-add_filter('pre_get_shortlink', 'akrabat_pre_get_shortlink');
+add_filter('pre_get_shortlink', 'akrabat_sl_pre_get_shortlink');
 
 // vim: set filetype=php expandtab tabstop=4 shiftwidth=4 autoindent smartindent: 
