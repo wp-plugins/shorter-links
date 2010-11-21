@@ -2,44 +2,29 @@
 Contributors: akrabat
 Donate link: http://akrabat.com
 Tags: revcanonical links url shorter shorturl shortlink
-Requires at least: 2.5
+Requires at least: 3.0
 Tested up to: 3.0.1
-Stable tag: 1.8.2
+Stable tag: 2.0.0
 
-This plugin creates rel="shortlink" link with a shorter URL in it, along with
-an appropriate Link HTTP header.
+Override the default WordPress "shortlink" URL with one that
+has a custom text in it. You can also set a different base URL.
 
 == Description ==
 
-The **Shorter Links** WordPress plugin automatically creates a link element in
-the <head> section of the post's page with a rel="shortlink" attribute. The URL
-in the href attribute defaults to the id number of the post in question. It
-also creates an HTTP `Link` header that also points to the shorter link.
+The **Shorter Links** WordPress plugin overrides the default WordPress
+"shortlink" URL with one that has a custom text in it. You can also set a
+different base URL.
 
 A custom field called "Shorter link" is created once a post is saved, 
-so that you can change the shorter link to a more memorable set of 
+so that you can change the shortlink to a more memorable set of
 characters.
 
 The choice of base URL to use for the short link can be configured within
 Settings->Shorter Links.
 
-The &lt;link&gt; element looks like this:
-
-    <link rel="shortlink" href="{url}" />
-
-For WordPress 3.0 and above, it will replace the default shortlink with the
-shorter link defined in the "Shorter link" custom field.
-
-The HTTP header is:
-
-    Link: <{url}>; rel=shortlink
-
 Related Links:
 
 * [Plugin home page](http://akrabat.com/shorter-links)
-* [Robert Spychala's Short URL Auto-Discovery proposal](http://sites.google.com/a/snaplog.com/wiki/short_url)
-* [URL Shortening Hinting article](http://laughingmeme.org/2009/04/03/url-shortening-hinting/)
-* [A rev="canonical" HTTP Header article](http://shiflett.org/blog/2009/apr/a-rev-canonical-http-header)
 
 == Installation ==
 
@@ -75,8 +60,13 @@ This plugin is licensed under the [New BSD license](http://akrabat.com/license/n
 
 == History == 
 
+**2.0.0 - 21 November 2010**
+Updated to be WordPress 3.0 or above, so we only need to hook into the WordPress
+shortlink system
+
 **1.8.2 - 21 November 2010**
-Fix permissions issue on settings page.
+Fix permissions issue on settings page. This is the last version that works
+on WordPress 2.9.x or earlier.
 
 **1.8.1 - 7 September 2010**
 Bug fix to remove a warning.
