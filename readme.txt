@@ -1,18 +1,18 @@
 === Plugin Name ===
 Contributors: akrabat
 Donate link: http://akrabat.com
-Tags: revcanonical links url shorter shorturl
+Tags: revcanonical links url shorter shorturl shortlink
 Requires at least: 2.5
-Tested up to: 2.9
-Stable tag: 1.5
+Tested up to: 3.0.1
+Stable tag: 1.8.2
 
-This plugin creates rel="shorturl" link with a shorter URL in it, along with
+This plugin creates rel="shortlink" link with a shorter URL in it, along with
 an appropriate Link HTTP header.
 
 == Description ==
 
 The **Shorter Links** WordPress plugin automatically creates a link element in
-the <head> section of the post's page with a rel="shorturl" attribute. The URL
+the <head> section of the post's page with a rel="shortlink" attribute. The URL
 in the href attribute defaults to the id number of the post in question. It
 also creates an HTTP `Link` header that also points to the shorter link.
 
@@ -25,11 +25,14 @@ Settings->Shorter Links.
 
 The &lt;link&gt; element looks like this:
 
-    <link rel="shorturl" href="{url}" />
+    <link rel="shortlink" href="{url}" />
+
+For WordPress 3.0 and above, it will replace the default shortlink with the
+shorter link defined in the "Shorter link" custom field.
 
 The HTTP header is:
 
-    Link: <{url}>; rel=shorturl
+    Link: <{url}>; rel=shortlink
 
 Related Links:
 
@@ -40,7 +43,7 @@ Related Links:
 
 == Installation ==
 
-1. Upload `shorter_links.php` to the `/wp-content/plugins/` directory
+1. Upload `shorter_links.php and config.php` to `/wp-content/plugins/shorter-links` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. If you want to set a different base URL, change it from
    Settings->Shorter Links.
@@ -55,10 +58,12 @@ This is a bookmarklet based on [Shorten](http://swtiny.eu/EZa):
 
 [Short URL][1]
 
-[1]: javascript:(function(){var%20url=document.location;var%20links=document.getElementsByTagName('link');var%20found=0;for(var%20i%20=%200,%20l;%20l%20=%20links[i];%20i++){if(l.getAttribute('rel')=='shorturl'||(/alternateshort/).exec(l.getAttribute('rel')))%20{found=l.getAttribute('href');break;}}if%20(!found)%20{for%20(var%20i%20=%200;%20l%20=%20document.links[i];%20i++)%20{if%20(l.getAttribute('rel')%20==%20'shorturl')%20{found%20=%20l.getAttribute('href');break;}}}if%20(found)%20{prompt('URL:',%20found);}%20else%20{window.onTinyUrlGot%20=%20function(r)%20{if%20(r.ok)%20{prompt('URL:',%20r.tinyurl);}%20else%20{alert('Could%20not%20shorten%20with%20tinyurl');}};var%20s%20=%20document.createElement('script');s.type='text/javascript';s.src='http://json-tinyurl.appspot.com/?callback=onTinyUrlGot&url='%20+document.location;document.getElementsByTagName('head')[0].appendChild(s);}})();
-
+[1]: javascript:(function(){var%20url=document.location;var%20links=document.getElementsByTagName('link');var%20found=0;for(var%20i%20=%200,%20l;%20l%20=%20links[i];%20i++){if(l.getAttribute('rel')=='shortlink'||(/alternateshort/).exec(l.getAttribute('rel')))%20{found=l.getAttribute('href');break;}}if%20(!found)%20{for%20(var%20i%20=%200;%20l%20=%20document.links[i];%20i++)%20{if%20(l.getAttribute('rel')%20==%20'shorturl')%20{found%20=%20l.getAttribute('href');break;}}}if%20(found)%20{prompt('URL:',%20found);}%20else%20{window.onTinyUrlGot%20=%20function(r)%20{if%20(r.ok)%20{prompt('URL:',%20r.tinyurl);}%20else%20{alert('Could%20not%20shorten%20with%20tinyurl');}};var%20s%20=%20document.createElement('script');s.type='text/javascript';s.src='http://json-tinyurl.appspot.com/?callback=onTinyUrlGot&url='%20+document.location;document.getElementsByTagName('head')[0].appendChild(s);}})();
 
 (Just drag to your bookmarks bar)
+
+In Safari 5, I use the "[Short URL](http://clintecker.com/safari/extensions/shorturl/)" extension by Clink Ecker.
+
 
 == Screenshots == 
 
@@ -69,6 +74,23 @@ None.
 This plugin is licensed under the [New BSD license](http://akrabat.com/license/new-bsd).
 
 == History == 
+
+**1.8.2 - 21 November 2010**
+Fix permissions issue on settings page.
+
+**1.8.1 - 7 September 2010**
+Bug fix to remove a warning.
+
+**1.8 - 1 September 2010**
+use shortlink rather than shorturl for WordPress less than 3.  
+For WordPress 3 or higher, hook into the new shortlink system.  
+Fix the admin page so that it displays in WordPress 3.
+
+**1.7 - 11 Feburary 2010**
+Handle failures better.
+
+**1.6 - 10 January 2010**
+Update version number in correct places so that the WP plugins system notices the update.
 
 **1.5 - 29 December 2009**
 Support permalinks that start with /%category%/
