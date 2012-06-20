@@ -3,7 +3,7 @@
 Plugin Name: Shorter Links
 Plugin URI: http://wordpress.org/extend/plugins/shorter-links/
 Description: Overrides WordPress' shortlink functionality to allow custom shortcodes per post.
-Version: 2.0.0
+Version: 2.0.1
 Author: Rob Allen
 Author URI: http://akrabat.com
 License New BSD: http://akrabat.com/license/new-bsd
@@ -23,30 +23,33 @@ class AkrabatShorterLinks
         if (array_key_exists('category_name', $query_vars)) {
             $shortLink = $query_vars['category_name'];
         }
+        if (array_key_exists('year', $query_vars)) {
+            $shortLink = $query_vars['year'];
+        }
         if (empty($shortLink)) {
             return $query_vars;
         }
 
-        if ((int) $shortLink > 0) {
-            // As we have a number, ssume that it is the post's id.
+        // try for permalink first
+        if (is_numeric($shortLink)) {
             $link = get_permalink($shortLink);
             if ($link) {
                 wp_redirect($link);
                 exit;
             }
+        }
+
+        // Look up the post or page with this shorter link 
+        $query = array('meta_key' => self::META_FIELD_NAME, 'meta_value' => $shortLink);
+        $posts = get_posts($query);
+        if (count($posts) > 0) {
+            wp_redirect(get_permalink($posts[0]), 301);
+            exit;
         } else {
-            // Look up the post or page with this shorter link 
-            $query = array('meta_key' => self::META_FIELD_NAME, 'meta_value' => $shortLink);
-            $posts = get_posts($query);
-            if (count($posts) > 0) {
-                wp_redirect(get_permalink($posts[0]), 301);
+            $pages = get_pages($query);
+            if (count($pages) > 0) {
+                wp_redirect(get_permalink($pages[0]), 301);
                 exit;
-            } else {
-                $pages = get_pages($query);
-                if (count($pages) > 0) {
-                    wp_redirect(get_permalink($pages[0]), 301);
-                    exit;
-                }
             }
         }
 

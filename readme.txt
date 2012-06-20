@@ -3,8 +3,8 @@ Contributors: akrabat
 Donate link: http://akrabat.com
 Tags: revcanonical links url shorter shorturl shortlink
 Requires at least: 3.0
-Tested up to: 3.0.1
-Stable tag: 2.0.0
+Tested up to: 3.4
+Stable tag: 2.0.1
 
 Override the default WordPress "shortlink" URL with one that
 has a custom text in it. You can also set a different base URL.
@@ -59,6 +59,10 @@ None.
 This plugin is licensed under the [New BSD license](http://akrabat.com/license/new-bsd).
 
 == History == 
+
+
+**2.0.1 - 20 June 2012**
+Updated to handle 4 digit short links that look like a year to WordPress.
 
 **2.0.0 - 21 November 2010**
 Updated to be WordPress 3.0 or above, so we only need to hook into the WordPress
