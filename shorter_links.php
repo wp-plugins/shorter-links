@@ -3,7 +3,7 @@
 Plugin Name: Shorter Links
 Plugin URI: http://wordpress.org/extend/plugins/shorter-links/
 Description: Overrides WordPress' shortlink functionality to allow custom shortcodes per post.
-Version: 2.0.2
+Version: 2.0.3
 Author: Rob Allen
 Author URI: http://akrabat.com
 License New BSD: http://akrabat.com/license/new-bsd
@@ -35,10 +35,13 @@ class AkrabatShorterLinks
 
         // try for permalink first
         if (is_numeric($shortLink)) {
-            $link = get_permalink($shortLink);
-            if ($link) {
-                wp_redirect($link);
-                exit;
+            $post = get_post( $shortLink);
+            if ($post->post_status == 'publish') {
+                $link = get_permalink($shortLink);
+                if ($link) {
+                    wp_redirect($link);
+                    exit;
+                }
             }
         }
 
