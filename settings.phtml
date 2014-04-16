@@ -1,0 +1,26 @@
+<?php
+// vim: set filetype=php expandtab tabstop=4 shiftwidth=4 autoindent smartindent:
+
+/**
+ * @package Shorter Links
+ * @author Rob Allen (rob@akrabat.com)
+ * @license New BSD: http://akrabat.com/license/new-bsd
+ */
+?>
+<div class="wrap">
+<h2>Shorter Links Settings</h2>
+<form method="post" action="options.php">
+    <?php settings_fields( 'akrabat-sl' ); ?>
+    <table class="form-table">
+        <tr valign="top">
+            <th scope="row">Base URL:</th>
+            <td><input type="text" name="akrabat_sl_base_url" value="<?php echo get_option('akrabat_sl_base_url'); ?>" />
+                <br/>Will use <tt><?php echo get_bloginfo('url');?></tt> if left blank.
+            </td>
+        </tr>
+    </table>
+    <p class="submit">
+        <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+    </p>
+</form>
+</div>
