@@ -4,7 +4,7 @@ Donate link: http://akrabat.com
 Tags: revcanonical links url shorter shorturl shortlink
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 
 Override the default WordPress "shortlink" URL with one that
 has a custom text in it. You can also set a different base URL.
