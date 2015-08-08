@@ -47,6 +47,10 @@ Try this bookmarklet: [Short URL][1]
 
 (Just drag to your bookmarks bar)
 
+The source of the bookmarklet is:
+
+    javascript:(function(){var%20url=document.location;var%20links=document.getElementsByTagName('link');var%20found=0;for(var%20i=0,l;l=links[i];i++){if(l.getAttribute('rel')=='shortlink'||(/alternateshort/).exec(l.getAttribute('rel'))){found=l.getAttribute('href');break;}}if(!found){for(var%20i=0;l=document.links[i];i++){if(l.getAttribute('rel')=='shorturl'){found=l.getAttribute('href');break;}}}if(found){prompt('URL:',found);}else{alert("No%20shortlink%20found");}})();
+
 There's also the "[Short URL](http://github.com/clintecker/Shorturl-Safari-Extension)" Safari extension by Clink Ecker.
 
 
