@@ -116,12 +116,12 @@ class AkrabatShorterLinks
         add_options_page('ShorterLinks', 'Shorter Links', 'manage_options', 'akrabat-sl', array(&$this, 'admin_page'));
     }
 
-    function admin_page()
+    public function admin_page()
     {
         include(dirname(__FILE__). '/settings.phtml');
     }
 
-    function admin_init(){
+    public function admin_init(){
         register_setting( 'akrabat-sl', 'akrabat_sl_base_url');
     }
 }
