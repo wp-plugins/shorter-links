@@ -39,7 +39,7 @@ Related Links:
 
 == Frequently Asked Questions ==
 
-** Is there a bookmarklet to extract shorturl links? **
+**Is there a bookmarklet to extract shorturl links?**
 
 Try this bookmarklet: [Short URL][1]
 
@@ -49,10 +49,6 @@ Try this bookmarklet: [Short URL][1]
 
 There's also the "[Short URL](http://github.com/clintecker/Shorturl-Safari-Extension)" Safari extension by Clink Ecker.
 
-
-== Screenshots ==
-
-None.
 
 == Licence ==
 
