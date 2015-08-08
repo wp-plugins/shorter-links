@@ -4,7 +4,7 @@ Donate link: http://akrabat.com
 Tags: revcanonical, links, url shortener, shorturl, shortlink
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 2.0.6
+Stable tag: 2.1.0
 License: New-BSD
 License URI: http://akrabat.com/license/new-bsd
 
@@ -60,6 +60,10 @@ This plugin is licensed under the [New BSD license](http://akrabat.com/license/n
 
 == History ==
 
+
+**2.1.0 - 8 August 2015**
+Rework to look for the shorter link after WordPress has done its processing. This
+means that a shorterlink that represents a date won't affect an archive list.
 
 **2.0.6 - 8 August 2015**
 Ensure that the short_link is correct when using a post id.
