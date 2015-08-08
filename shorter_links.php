@@ -3,7 +3,7 @@
 Plugin Name: Shorter Links
 Plugin URI: http://wordpress.org/extend/plugins/shorter-links/
 Description: Overrides WordPress' shortlink functionality to allow custom shortcodes per post.
-Version: 2.0.3
+Version: 2.0.6
 Author: Rob Allen
 Author URI: http://akrabat.com
 License New BSD: http://akrabat.com/license/new-bsd
@@ -28,7 +28,7 @@ class AkrabatShorterLinks
         }
         if(empty($shortLink) && isset($_SERVER['REQUEST_URI'])) {
             $shortLink = trim($_SERVER['REQUEST_URI'], '/');
-        }        
+        }
         if (empty($shortLink)) {
             return $query_vars;
         }
@@ -45,7 +45,7 @@ class AkrabatShorterLinks
             }
         }
 
-        // Look up the post or page with this shorter link 
+        // Look up the post or page with this shorter link
         $query = array('meta_key' => self::META_FIELD_NAME, 'meta_value' => $shortLink);
         $posts = get_posts($query);
         if (count($posts) > 0) {
@@ -75,12 +75,14 @@ class AkrabatShorterLinks
 
         $short_link = get_post_meta($post_id, self::META_FIELD_NAME, true);
         if('' == $short_link) {
+            // Set shortlink to /{post id} as it looks nicer than ?p={post id}
             $short_link = $post_id;
         }
+        $short_link = '/' . ltrim($short_link, '/');
 
         $url = trim(get_option('akrabat_sl_base_url'), "/\t\r\n ");
         if (!empty($url)) {
-            $short_link = rtrim($url, '/') . '/' . $short_link;
+            $short_link = rtrim($url, '/') . $short_link;
         } else {
             $short_link = home_url($short_link);
         }
